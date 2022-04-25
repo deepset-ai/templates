@@ -1,4 +1,4 @@
-#A default pipeline with a good embedding base Retriever and a Reader model
+#A default English QA pipeline with a good embedding based Retriever and a large Reader model
 version: '1.3.0'
 name: 'QA_en'
 
@@ -16,7 +16,7 @@ components:
   - name: Reader
     type: FARMReader
     params:
-      model_name_or_path: deepset/roberta-base-squad2
+      model_name_or_path: deepset/roberta-large-squad2
       context_window_size: 700
   - name: TextFileConverter
     type: TextConverter
@@ -25,7 +25,7 @@ components:
     params:
       split_by: word
       split_length: 250
-      split_overlap: 30
+      split_overlap: 50
       split_respect_sentence_boundary: True
 
 pipelines:

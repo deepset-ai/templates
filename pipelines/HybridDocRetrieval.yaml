@@ -1,11 +1,10 @@
-#A pipeline that combines a dense Retriever with a keyword-based Retriever
+#A pipeline that combines a dense Retriever with a keyword-based Retriever for English texts
 version: '1.3.0'
 name: 'hybrid_pipeline'
 
 components:
   - name: DocumentStore
     type: DeepsetCloudDocumentStore
-    params: {}
   - name: ESRetriever
     type: ElasticsearchRetriever
     params:
@@ -14,7 +13,7 @@ components:
     type: EmbeddingRetriever
     params:
       document_store: DocumentStore
-      embedding_model: sentence-transformers/msmarco-distilbert-multilingual-en-de-v2-tmp-lng-aligned
+      embedding_model: sentence-transformers/multi-qa-mpnet-base-dot-v1
       model_format: sentence_transformers
       top_k: 20
   - name: JoinResults
@@ -23,13 +22,13 @@ components:
       join_mode: reciprocal_rank_fusion
   - name: TextFileConverter
     type: TextConverter
-    params: {}
   - name: Preprocessor
     type: PreProcessor
     params:
-      split_by: passage
-      split_length: 1
-      split_respect_sentence_boundary: false
+      split_by: word
+      split_length: 500
+      split_overlap: 50
+      split_respect_sentence_boundary: True
 
 pipelines:
   - name: query

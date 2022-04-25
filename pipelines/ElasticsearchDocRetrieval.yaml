@@ -1,4 +1,4 @@
-# A pipeline for TXT and PDFs simultaneously, retrieval is done only with Elasticsearch
+# A pipeline for converting both TXT and PDFs simultaneously, retrieval is done only with Elasticsearch
 version: '1.3.0'
 name: 'Elasticsearch_indexing'
 
