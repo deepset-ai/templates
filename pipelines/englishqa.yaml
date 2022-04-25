@@ -1,4 +1,4 @@
-#A default English QA pipeline with a good embedding based Retriever and a large Reader model
+#A default English QA pipeline with a good embedding based Retriever and a distilled Reader model
 version: '1.3.0'
 name: 'QA_en'
 
