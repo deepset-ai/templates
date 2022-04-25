@@ -16,7 +16,7 @@ components:
   - name: Reader
     type: FARMReader
     params:
-      model_name_or_path: deepset/roberta-large-squad2
+      model_name_or_path: deepset/roberta-base-squad2-distilled
       context_window_size: 700
   - name: TextFileConverter
     type: TextConverter
