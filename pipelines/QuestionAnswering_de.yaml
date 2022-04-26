@@ -24,7 +24,7 @@ components:
       context_window_size: 700
   - name: FileTypeClassifier
     type: FileTypeClassifier
-  - name: TextFileConverter
+  - name: TextConverter
     type: TextConverter
   - name: PDFConverter
     type: PDFToTextConverter
@@ -49,12 +49,12 @@ pipelines:
     nodes:
       - name: FileTypeClassifier
         inputs: [File]
-      - name: TextFileConverter
+      - name: TextConverter
         inputs: [FileTypeClassifier.output_1]
       - name: PDFConverter
         inputs: [FileTypeClassifier.output_2]
       - name: Preprocessor
-        inputs: [TextFileConverter, PDFConverter]
+        inputs: [TextConverter, PDFConverter]
       - name: Retriever
         inputs: [Preprocessor]
       - name: DocumentStore

@@ -15,7 +15,7 @@ components:
       top_k: 20
   - name: FileTypeClassifier
     type: FileTypeClassifier
-  - name: TextFileConverter
+  - name: TextConverter
     type: TextConverter
   - name: PDFConverter
     type: PDFToTextConverter
@@ -39,12 +39,12 @@ pipelines:
       # Depending on the file type we use a Text or PDF converter
       - name: FileTypeClassifier
         inputs: [File]
-      - name: TextFileConverter
+      - name: TextConverter
         inputs: [FileTypeClassifier.output_1]
       - name: PDFConverter
         inputs: [FileTypeClassifier.output_2]
       - name: Preprocessor
-        inputs: [TextFileConverter, PDFConverter]
+        inputs: [TextConverter, PDFConverter]
       - name: Retriever
         inputs: [Preprocessor]
       - name: DocumentStore
