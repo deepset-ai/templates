@@ -61,7 +61,7 @@ pipelines:
         inputs: [FileTypeClassifier.output_2]
       - name: Preprocessor
         inputs: [TextConverter, PDFConverter]
-      - name: Retriever
+      - name: EmbeddingRetriever
         inputs: [Preprocessor]
       - name: DocumentStore
-        inputs: [Retriever]
+        inputs: [EmbeddingRetriever]
